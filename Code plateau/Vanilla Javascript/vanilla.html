@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JavasScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul>
+        <li div id="keys"></div>
+            <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+            </div>
+        </li>
+    
+    <li div id="keys"></div>
+        <div data-key="66" class="key">
+        <kbd>B</kbd>
+        <span class="sound">ride</span>
+        </div>
+    </li>
+
+    <li div id="keys"></div>
+        <div data-key="67" class="key">
+        <kbd>C</kbd>
+        <span class="sound">openhat</span>
+        </div>
+    </li>
+
+    <li div id="keys"></div>
+        <div data-key="75" class="key">
+        <kbd>K</kbd>
+        <span class="sound">hihat</span>
+    </div>
+    </li>
+
+   <li div id="keys"></div>
+        <div data-key="87" class="key">
+        <kbd>W</kbd>
+        <span class="sound">Ding</span>
+        </div>
+    </li> 
+
+    <li div id="keys"></div>
+        <div data-key="90" class="key">
+        <kbd>Z</kbd>
+        <span class="sound">boom</span>
+        </div>
+    </li>
+
+    <li div id="keys"></div>
+        <div data-key="74" class="key">
+        <kbd>J</kbd>
+        <span class="sound">crunchy</span>
+        </div>
+    </li>
+
+    <li div id="keys"></div>
+        <div data-key="79" class="key">
+        <kbd>O</kbd>
+        <span class="sound">clapping</span>
+        </div>
+    </li>
+</ul>
+
+    <audio data-key="65" src="./sound/sound clap.wav"></audio>
+    <audio data-key="66" src="sound/ride.mp3"></audio>
+    <audio data-key="67" src="sound/openhat.mp3"></audio>
+    <audio data-key="75" src="sound/hihat.mp3"></audio>
+    <audio data-key="87" src="sound/Ding.wav"></audio>
+    <audio data-key="90" src="sound/boom.mp3"></audio>
+    <audio data-key="74" src="sound/crunchy.mp3"></audio>
+    <audio data-key="79" src="sound/clapping.wav"></audio>
+
+    <script>
+
+        function removeTransitioned(e) {
+            if (e.propertyName !== 'transition') 
+            return;
+            e.target.classList.remove('playing');
+        }
+
+        function playSound(e) {
+            const audio = document.querySelector(`audio[data-key='"${e.keyCode}"]`);
+            console.log(audio);
+            const key = document.querySelector(`div[data-key="${e.keyCOde}"]`);
+            if (!audio) return;
+
+            key.classList.add('playing');
+            audio.currentTime = 0;
+            audio.play();
+
+            const keys = Array.from(document.querySelectorAll('.key'));
+            keys.forEach(key => key.addEventListener('transitioned', removeTRansition));
+            window.addEventListener('keydown', playSound);
+        }
+
+
+    </script>
+</body>
+</html>
