@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>DOM</title>
+</head>
+<body>
+   
+
+    <button onclick="
+      document.querySelector('.choice')
+         .innerHTML = 'You chose: Heads';
+    ">Heads</button>
+
+    <button onclick="document.querySelector('.choice')
+         .innerHTML = 'You chose: Tails';
+    ">Tails</button>
+
+    <p class="choice"></p>
+
+    
+
+    <input placeholder="Name" class="Name-input" onkeydown="
+      if (event.key === 'Enter') {
+         submitName()
+      }
+    ">
+    <button onclick="
+        submitName()
+    ">Submit</button>
+
+    <p class="message"></p>
+
+   <script>
+      function submitName() {
+
+         const inputElement = document.querySelector('.Name-input');
+         document.querySelector('.message').innerHTML = `Your name is ${inputElement.value}`;
+      
+      }
+
+      /*
+   function subscribe() {
+      const buttonElement = (document.querySelector('.js-subscribe-button'))
+
+      if (buttonElement.innerHTML === 'Subscribe') {
+         buttonElement.innerHTML = 'Subscribed';
+      } else{
+         buttonElement.innerHTML = 'Subscribe';
+      }
+
+   }
+   */
+      //console.log(document.querySelector('button'));//
+      //document.querySelector('.DOM').innerHTML = '9b done'//
+
+      
+  
+
+   </script>
+   
+</body>
+</html>
